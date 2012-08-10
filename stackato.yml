@@ -1,0 +1,14 @@
+name: hydrant
+instances: 1
+framework:
+  type: rails3
+  runtime: ruby19
+mem: 256M
+services:
+  pg-hydrant: postgresql
+# hooks:
+#   post-staging:
+#     - bundle exec rake threadsafe:disabled db:seed
+#     - bundle exec rake threadsafe:enabled
+
+
