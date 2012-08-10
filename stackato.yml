@@ -7,8 +7,10 @@ mem: 256M
 services:
   pg-hydrant: postgresql
 # hooks:
-#   post-staging:
-#     - bundle exec rake threadsafe:disabled db:seed
+#   pre-running:
+#     - bundle exec rake threadsafe:disabled
+#     - bundle exec rake db:migrate
+#     - bundle exec rake db:schema:load
+#     - bundle exec rake db:seed
 #     - bundle exec rake threadsafe:enabled
-
-
+    
