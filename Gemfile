@@ -14,7 +14,6 @@ gem 'http_accept_language'
 gem 'pg', '0.12.2'
 gem 'rails_admin'
 gem 'validates_formatting_of'
-
 platforms :ruby_18 do
   gem 'fastercsv'
 end
@@ -33,4 +32,6 @@ end
 #   gem 'sqlite3'
 #   gem 'webmock'
 # end
-# 
+#
+
+gem 'thin' 
