@@ -1,14 +1,10 @@
 name: hydrant
-instances: 1
 framework:
-  type: rails3
-  runtime: ruby19
-mem: 256M
+  type: buildpack
+env:
+ BUILDPACK_URL: git://github.com/ActiveState/stackato-buildpack-ruby.git
 services:
   pg-hydrant: postgresql
-# hooks:
-#   post-staging:
-#     - bundle exec rake threadsafe:disabled db:seed
-#     - bundle exec rake threadsafe:enabled
-
-
+hooks:
+  post-staging:
+    - bundle exec rake db:seed
