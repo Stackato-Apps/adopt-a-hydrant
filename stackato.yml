@@ -6,11 +6,5 @@ services:
 requirements:
   ubuntu:
     - libxslt1-dev
-# hooks:
-#   pre-running:
-#     - bundle exec rake threadsafe:disabled
-#     - bundle exec rake db:migrate
-#     - bundle exec rake db:schema:load
-#     - bundle exec rake db:seed
-#     - bundle exec rake threadsafe:enabled
-    
+env:
+  SECRET_TOKEN: insert_secret_here
