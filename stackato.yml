@@ -1,11 +1,11 @@
 name: hydrant
 instances: 1
-framework:
-  type: rails3
-  runtime: ruby19
 mem: 256M
 services:
   pg-hydrant: postgresql
+requirements:
+  ubuntu:
+    - libxslt1-dev
 # hooks:
 #   pre-running:
 #     - bundle exec rake threadsafe:disabled
