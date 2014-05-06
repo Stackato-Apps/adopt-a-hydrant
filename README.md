@@ -1,8 +1,14 @@
-# Adopt-a-Hydrant [![Build Status](https://secure.travis-ci.org/codeforamerica/adopt-a-hydrant.png?branch=master)][travis] [![Dependency Status](https://gemnasium.com/codeforamerica/adopt-a-hydrant.png?travis)][gemnasium]
-Claim responsibility for shoveling out a fire hydrant after it snows.
+# Adopt-a-Hydrant
+
+[![Build Status](http://img.shields.io/travis/codeforamerica/adopt-a-hydrant.svg)][travis]
+[![Dependency Status](http://img.shields.io/gemnasium/codeforamerica/adopt-a-hydrant.svg)][gemnasium]
+[![Coverage Status](http://img.shields.io/coveralls/codeforamerica/adopt-a-hydrant.svg)][coveralls]
 
 [travis]: http://travis-ci.org/codeforamerica/adopt-a-hydrant
 [gemnasium]: https://gemnasium.com/codeforamerica/adopt-a-hydrant
+[coveralls]: https://coveralls.io/r/codeforamerica/adopt-a-hydrant
+
+Claim responsibility for shoveling out a fire hydrant after it snows.
 
 ## Screenshot
 ![Adopt-a-Hydrant](https://github.com/codeforamerica/adopt-a-hydrant/raw/master/screenshot.png "Adopt-a-Hydrant")
@@ -28,6 +34,51 @@ This application requires [Postgres](http://www.postgresql.org/) to be installed
 
 ## Seed Data
     bundle exec rake db:seed
+
+## Deploying to Heroku
+A successful deployment to Heroku requires a few setup steps:
+
+1. Generate a new secret token:
+
+    ```
+    rake secret
+    ```
+
+2. Set the token on Heroku:
+
+    ```
+    heroku config:set SECRET_TOKEN=the_token_you_generated
+    ```
+
+3. [Precompile your assets](https://devcenter.heroku.com/articles/rails3x-asset-pipeline-cedar)
+
+    ```
+    RAILS_ENV=production bundle exec rake assets:precompile
+
+    git add public/assets
+
+    git commit -m "vendor compiled assets"
+    ```
+
+4. Add a production database to config/database.yml
+
+5. Seed the production db:
+
+    `heroku run bundle exec rake db:seed`
+
+Keep in mind that the Heroku free Postgres plan only allows up to 10,000 rows,
+so if your city has more than 10,000 fire hydrants (or other thing to be
+adopted), you will need to upgrade to the $9/month plan.
+
+### Google Analytics
+If you have a Google Analytics account you want to use to track visits to your
+deployment of this app, just set your ID and your domain name as environment
+variables:
+
+    heroku config:set GOOGLE_ANALYTICS_ID=your_id
+    heroku config:set GOOGLE_ANALYTICS_DOMAIN=your_domain_name
+
+An example ID is `UA-12345678-9`, and an example domain is `adoptahydrant.org`.
 
 ## Contributing
 In the spirit of [free software][free-sw], **everyone** is encouraged to help
@@ -81,7 +132,7 @@ Ideally, a bug report should include a pull request with failing specs.
 [pr]: http://help.github.com/send-pull-requests/
 
 ## Supported Ruby Version
-This library aims to support and is [tested against][travis] Ruby version 1.9.3.
+This library aims to support and is [tested against][travis] Ruby version 2.1.0.
 
 If something doesn't work on this version, it should be considered a bug.
 
@@ -96,7 +147,7 @@ timely fashion. If critical issues for a particular implementation exist at the
 time of a major release, support for that Ruby version may be dropped.
 
 ## Copyright
-Copyright (c) 2012 Code for America. See [LICENSE][] for details.
+Copyright (c) 2014 Code for America. See [LICENSE][] for details.
 
 [license]: https://github.com/codeforamerica/adopt-a-hydrant/blob/master/LICENSE.md
 
