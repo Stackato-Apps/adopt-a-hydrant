@@ -6,5 +6,3 @@ services:
 requirements:
   ubuntu:
     - libxslt1-dev
-env:
-  SECRET_TOKEN: insert_secret_here
