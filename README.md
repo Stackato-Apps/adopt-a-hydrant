@@ -20,9 +20,21 @@ You can see a running version of the application at
 [demo]: http://adopt-a-hydrant.herokuapp.com/
 
 ## Deploying to Stackato
+1. Create config/production_secret.yml (production_secret_sample.yml may be used as reference)
+
+2. Generate a new secret token:
+    ```
+    rake secret
+    ```
+
+3. Copy the token generated into the secret_key_base field 
+
+4. From the command line run:
+    ```
     stackato push -n
     stackato run bundle exec rake db:migrate
     stackato run bundle exec rake db:seed
+    ```
 
 ## Installation
 This application requires [Postgres](http://www.postgresql.org/) to be installed
@@ -40,48 +52,14 @@ This application requires [Postgres](http://www.postgresql.org/) to be installed
 ## Seed Data
     bundle exec rake db:seed
 
-## Deploying to Heroku
-A successful deployment to Heroku requires a few setup steps:
-
-1. Generate a new secret token:
-
-    ```
-    rake secret
-    ```
-
-2. Set the token on Heroku:
-
-    ```
-    heroku config:set SECRET_TOKEN=the_token_you_generated
-    ```
-
-3. [Precompile your assets](https://devcenter.heroku.com/articles/rails3x-asset-pipeline-cedar)
-
-    ```
-    RAILS_ENV=production bundle exec rake assets:precompile
-
-    git add public/assets
-
-    git commit -m "vendor compiled assets"
-    ```
-
-4. Add a production database to config/database.yml
-
-5. Seed the production db:
-
-    `heroku run bundle exec rake db:seed`
-
-Keep in mind that the Heroku free Postgres plan only allows up to 10,000 rows,
-so if your city has more than 10,000 fire hydrants (or other thing to be
-adopted), you will need to upgrade to the $9/month plan.
-
 ### Google Analytics
 If you have a Google Analytics account you want to use to track visits to your
 deployment of this app, just set your ID and your domain name as environment
-variables:
+variables in stackato.yml:
 
-    heroku config:set GOOGLE_ANALYTICS_ID=your_id
-    heroku config:set GOOGLE_ANALYTICS_DOMAIN=your_domain_name
+    env:
+      GOOGLE_ANALYTICS_ID: your_id
+      GOOGLE_ANALYTICS_DOMAIN: your_domain_name
 
 An example ID is `UA-12345678-9`, and an example domain is `adoptahydrant.org`.
 
