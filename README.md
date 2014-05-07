@@ -19,6 +19,11 @@ You can see a running version of the application at
 
 [demo]: http://adopt-a-hydrant.herokuapp.com/
 
+## Deploying to Stackato
+    stackato push -n
+    stackato run bundle exec rake db:migrate
+    stackato run bundle exec rake db:seed
+
 ## Installation
 This application requires [Postgres](http://www.postgresql.org/) to be installed
 
