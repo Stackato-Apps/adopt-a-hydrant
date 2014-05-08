@@ -1,4 +1,4 @@
-name: hydrant
+name: adopt-a-hydrant
 instances: 1
 mem: 256M
 services:
