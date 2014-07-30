@@ -1,8 +1,0 @@
-name: adopt-a-hydrant
-instances: 1
-mem: 256M
-services:
-  pg-hydrant: postgresql
-requirements:
-  ubuntu:
-    - libxslt1-dev

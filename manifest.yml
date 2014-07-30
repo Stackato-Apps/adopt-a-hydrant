@@ -1,0 +1,11 @@
+applications:
+- name: adopt-a-hydrant
+  instances: 1
+  mem: 256M
+  services:
+    ${name}-pg:
+      type: postgresql
+  stackato:
+    requirements:
+      ubuntu:
+      - libxslt1-dev
