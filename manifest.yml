@@ -3,7 +3,7 @@ applications:
   instances: 1
   mem: 256M
   services:
-    ${name}-pg:
+    ${name}-db:
       type: postgresql
   stackato:
     requirements:
