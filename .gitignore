@@ -18,4 +18,4 @@
 /log/*.log
 /tmp
 
-/config/production_sample.yml
+/config/production_secret.yml
