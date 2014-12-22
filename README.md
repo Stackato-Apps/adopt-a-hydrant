@@ -32,8 +32,6 @@ You can see a running version of the application at
 4. From the command line run:
     ```
     stackato push -n
-    stackato run bundle exec rake db:migrate
-    stackato run bundle exec rake db:seed
     ```
 
 ## Installation

@@ -6,6 +6,7 @@ applications:
     ${name}-db:
       type: postgresql
   stackato:
-    requirements:
-      ubuntu:
-      - libxslt1-dev
+    hooks:
+      post-staging:
+      - bundle exec rake db:migrate
+      - bundle exec rake db:seed
