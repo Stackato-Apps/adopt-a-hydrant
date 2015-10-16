@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
-ruby '2.0.0'
+ruby '2.2.0'
 
-gem 'rails', '~> 4.1.0'
+gem 'rails', '~> 4.2.4'
 
 gem 'arel'
 gem 'devise'
@@ -9,7 +9,7 @@ gem 'geokit'
 gem 'haml'
 gem 'http_accept_language'
 gem 'nokogiri'
-gem 'pg', '0.12.2'
+gem 'pg'
 gem 'rails_12factor'
 gem 'rails_admin'
 gem 'validates_formatting_of'
@@ -23,17 +23,13 @@ group :assets do
   gem 'uglifier'
 end
 
-group :production do
-  gem 'puma'
-end
-
-=begin
 group :development do
   gem 'spring'
 end
 
-group :development, :test do
-  gem 'pry'
+group :production do
+  gem 'puma'
+  gem 'skylight'
 end
 
 group :test do
@@ -43,4 +39,3 @@ group :test do
   gem 'sqlite3'
   gem 'webmock'
 end
-=end

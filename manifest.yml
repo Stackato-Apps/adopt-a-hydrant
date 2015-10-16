@@ -1,5 +1,7 @@
 applications:
 - name: adopt-a-hydrant
+  env:
+    SECRET_TOKEN: changeme
   instances: 1
   mem: 256M
   services:

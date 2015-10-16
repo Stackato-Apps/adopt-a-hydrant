@@ -20,16 +20,14 @@ You can see a running version of the application at
 [demo]: http://adopt-a-hydrant.herokuapp.com/
 
 ## Deploying to Stackato
-1. Create config/production_secret.yml (production_secret_sample.yml may be used as reference)
-
-2. Generate a new secret token:
+1. Generate a new secret token:
     ```
     rake secret
     ```
 
-3. Copy the token generated into the secret_key_base field 
+2. In the manifest.yml file replace the value of `SECRET_TOKEN` with the the one generated in the previous step 
 
-4. From the command line run:
+3. From the command line run:
     ```
     stackato push -n
     ```
@@ -49,17 +47,6 @@ This application requires [Postgres](http://www.postgresql.org/) to be installed
 
 ## Seed Data
     bundle exec rake db:seed
-
-### Google Analytics
-If you have a Google Analytics account you want to use to track visits to your
-deployment of this app, just set your ID and your domain name as environment
-variables in stackato.yml:
-
-    env:
-      GOOGLE_ANALYTICS_ID: your_id
-      GOOGLE_ANALYTICS_DOMAIN: your_domain_name
-
-An example ID is `UA-12345678-9`, and an example domain is `adoptahydrant.org`.
 
 ## Contributing
 In the spirit of [free software][free-sw], **everyone** is encouraged to help
@@ -113,7 +100,7 @@ Ideally, a bug report should include a pull request with failing specs.
 [pr]: http://help.github.com/send-pull-requests/
 
 ## Supported Ruby Version
-This library aims to support and is [tested against][travis] Ruby version 2.1.0.
+This library aims to support and is [tested against][travis] Ruby version 2.1.2.
 
 If something doesn't work on this version, it should be considered a bug.
 

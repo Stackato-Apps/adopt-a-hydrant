@@ -3,11 +3,10 @@ ENV['RAILS_ENV'] ||= 'test'
 require 'simplecov'
 require 'coveralls'
 
-SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
-  SimpleCov::Formatter::HTMLFormatter,
-  Coveralls::SimpleCov::Formatter,
-]
-SimpleCov.start('rails')
+SimpleCov.formatters = [SimpleCov::Formatter::HTMLFormatter, Coveralls::SimpleCov::Formatter]
+SimpleCov.start('rails') do
+  minimum_coverage(97.19)
+end
 
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
