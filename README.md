@@ -19,7 +19,7 @@ You can see a running version of the application at
 
 [demo]: http://adopt-a-hydrant.herokuapp.com/
 
-## Deploying to Stackato
+## Deploying to HPE Helion Stackato
 1. Generate a new secret token:
     ```
     rake secret
